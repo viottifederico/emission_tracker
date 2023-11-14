@@ -1,2 +1,0 @@
-machine,device,dataset_name,epochs,batch_size,image_size,num_train_samples,num_test_samples,total_train_time,time_per_epoch,model,test_accuracy
-Apple M1 Pro,mps,cifar10,3,32,224,50000,10000,508.662,169.554,TinyVGG,0.42432108626198084
