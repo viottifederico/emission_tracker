@@ -1,2 +1,2 @@
 project_name,duration,emissions,emissions_rate,cpu_power,ram_power,cpu_energy,ram_energy,energy_consumed,country_name,region,os,python_version,cpu_count,cpu_model,ram_total_size
-xgboostmodel,27.112145185470563,1.932960841287198e-06,2.6010002256184568e-05,1825.0,2190.0,3.7609520554542544e-05,4.50416660308838e-05,8.265118658542634e-05,Albania,tirana,macOS-14.1-arm64-arm-64bit,3.9.6,10,Apple M1 Pro,16.0
+xgboostmodel,2711.2145185470563,193.2960841287198,26.010002256184567,1825.0,2190.0,37.60952055454255,45.041666030883796,82.65118658542634,Albania,tirana,macOS-14.1-arm64-arm-64bit,3.9.6,10,Apple M1 Pro,16.0
