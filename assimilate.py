@@ -37,7 +37,7 @@ if __verbosity__ >= 1 : print('\t{0:>30s} : {1:<6d}'.format('rows', len(raw_df.i
 # Value harmoziation for rendering
 raw_df['duration'] = raw_df['duration'] * 100
 raw_df['emissions'] = raw_df['emissions'] * 100000000
-raw_df['emissions_rate'] = raw_df['emissions_rate'] * 1000000
+raw_df['emissions_rate'] = raw_df['emissions_rate'] * 100000000
 raw_df['cpu_energy'] = raw_df['cpu_energy'] * 1000000
 raw_df['ram_energy'] = raw_df['ram_energy'] * 1000000
 raw_df['energy_consumed'] = raw_df['energy_consumed'] * 1000000
