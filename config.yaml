@@ -1,0 +1,51 @@
+FEATURES:
+      'timestamp': True  
+      'project_name': True
+      'run_id': False
+      'duration': True
+      'emissions': True
+      'emissions_rate': True
+      'cpu_power': True
+      'gpu_power': True
+      'ram_power': True
+      'cpu_energy': True
+      'gpu_energy': True
+      'ram_energy': True
+      'energy_consumed': True
+      'country_name': False
+      'country_iso_code': False
+      'region': False
+      'cloud_provider': False
+      'cloud_region': False
+      'os': False
+      'python_version': False
+      'codecarbon_version': False
+      'cpu_count': False
+      'cpu_model': False
+      'gpu_count': False
+      'gpu_model': False
+      'longitude': False
+      'latitude': False
+      'ram_total_size': False
+      'tracking_mode': False
+      'on_cloud': False
+      'pue': False
+SCALARS:
+      duration: 100
+      emissions: 100000000
+      emissions_rate: 100000000
+      cpu_energy: 1000000
+      ram_energy: 1000000
+      energy_consumed: 1000000
+LOG_TRANSOFRMATION:
+      'duration': True
+      'emissions': True
+      'emissions_rate': True
+      'cpu_energy': True
+      'ram_energy': True
+      'energy_consumed': True
+OPERATIONAL_MODE:
+      verbosity: 1   
+      log_transformation: True
+      apply_scalars: True
+ 

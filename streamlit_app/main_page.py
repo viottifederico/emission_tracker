@@ -14,7 +14,7 @@ import plotly.figure_factory as ff
 def from_dict_get_value(dictionary = None, keyword = None, roundup_digits = 2):
     return round(list(dictionary[keyword].values())[0],roundup_digits)
 
-#purpose : retunrs np array given projectName, ColumnNane, optionally start and stop can be given
+#purpose : returns np array given projectName, ColumnNane, optionally start and stop can be given
 #  input : projectName,str  must match with existing file in hardcoded data folder
 #          ColumnNane, str must be an existing column in the provided dataset
 #          datetime_start, str format "2022-11-24" it is the first record collated into the output array, it must be in the past respect to datetime_end
@@ -104,12 +104,11 @@ for i in range(len(project_names)):               #loop on project names
 t_df['date']=entry['datetime_serie']          #add independent axis (date) 
 
 #render the line chart
-st.line_chart(t_df, x= 'date', y=project_names,color =['#1f77b4','#ff7f0e','#2ca02c'])
+st.line_chart(t_df, x= 'date', y=project_names, color =['#1f77b4','#ff7f0e','#2ca02c'])
 
 arr = []
 for prj in project_names:               #loop on project names 
    arr.append(t_df[prj])
-print (arr)
 fig = ff.create_distplot(arr, project_names)
 st.plotly_chart(fig, use_container_width=True)
 
