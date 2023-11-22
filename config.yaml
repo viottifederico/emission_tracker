@@ -48,4 +48,9 @@ OPERATIONAL_MODE:
       verbosity: 1   
       log_transformation: True
       apply_scalars: True
+CARBON_BALANCE:
+      tree_co2kg_ratio_min: 21.77
+      tree_co2kg_ratio_max: 31.50
+      tree_co2kg_ratio_avg: 26.63
+      trees_per_hectare_avg: 500
  
