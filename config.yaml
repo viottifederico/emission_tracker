@@ -1,3 +1,8 @@
+PROJECTS:
+      '00': "All_projects"
+      '01': "LogisticRegression model"
+      '02': "Project Excecuter DataLoad"
+      '03': "XGBoost model"
 FEATURES:
       'timestamp': True  
       'project_name': True
@@ -5,12 +10,12 @@ FEATURES:
       'duration': True
       'emissions': True
       'emissions_rate': True
-      'cpu_power': True
-      'gpu_power': True
-      'ram_power': True
-      'cpu_energy': True
-      'gpu_energy': True
-      'ram_energy': True
+      'cpu_power': False
+      'gpu_power': False
+      'ram_power': False
+      'cpu_energy': False
+      'gpu_energy': False
+      'ram_energy': False
       'energy_consumed': True
       'country_name': False
       'country_iso_code': False
@@ -34,15 +39,11 @@ SCALARS:
       duration: 100
       emissions: 100000000
       emissions_rate: 100000000
-      cpu_energy: 1000000
-      ram_energy: 1000000
       energy_consumed: 1000000
-LOG_TRANSOFRMATION:
+LOG_TRANSFORMATION:
       'duration': True
       'emissions': True
       'emissions_rate': True
-      'cpu_energy': True
-      'ram_energy': True
       'energy_consumed': True
 OPERATIONAL_MODE:
       verbosity: 1   
