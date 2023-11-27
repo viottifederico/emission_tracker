@@ -2,41 +2,28 @@ import datetime,calendar, yaml
 import numpy as np
 from base64 import b64encode
 
-# '''
-# Status management
-# '''
-# class Status():
-#     def __init__(self):
-#         self.status_filename = 'status.yml'
-#         self.current = None
-#         self.get_status()
+
+import streamlit as st
+from streamlit_extras.dataframe_explorer import dataframe_explorer 
+import pandas as pd
+
+def build_subpage(streamlit_obj, title,df_csv):
+    streamlit_obj.set_page_config(layout="wide")
+    streamlit_obj.title(title)
+    df = pd.read_csv(df_csv)
+    df = df.drop(columns= ['project_name','timestamp','Unnamed: 0'])
+    _cols = list(df.columns    )
+    _cols.remove('date')
+    with streamlit_obj.expander("Series Data:"):
+         filtered_df = dataframe_explorer(df, case=False)
+         streamlit_obj.dataframe(filtered_df, use_container_width=True)
+    x_ax = streamlit_obj.selectbox('Select the x label',_cols, index=12)
+    y_ax = streamlit_obj.selectbox('Select the y label',_cols, index=8)
+    import plotly.express as px
+    fig = px.scatter(filtered_df, x=x_ax, y=y_ax,  marginal_y="box",
+                marginal_x="box", trendline="ols", template="simple_white")
+    streamlit_obj.plotly_chart(fig,  use_container_width=True)
     
-#     #rertrieve status
-#     def get_status(self):
-#         with open(self.status_filename , 'r') as fobj: 
-#             self.current = yaml.safe_load(fobj)    
-#         return self.current    
-
-#     #store status
-#     def push_status(self):
-#         with open(self.status_filename, 'w') as fobj:
-#              self.current = yaml.dump(self.current, fobj)    
-
-#     #store status
-#     def update(self, kw=None, value =None, quiet = False):
-#         self.get_status()
-#         if kw in self.current['STATUS']:
-#             if value is None : value = 'None'
-#             self.current['STATUS'][kw]=value
-#         self.push_status()
-#         if quiet == False:
-#            print('Class STATUS : update performed on kw ',kw, 'with value ', value,' \n',self.get_status())  
-
-#     #reset status
-#     def reset(self):        
-#         for kw in self.current['STATUS']:
-#             self.update(kw=kw,value=None, quiet = True)
-#         print('Class STATUS : reset performed\n',self.get_status())    
 
 
 '''

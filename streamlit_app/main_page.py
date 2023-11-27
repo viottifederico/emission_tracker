@@ -100,7 +100,7 @@ with st.container():
 with col1: 
     selected_projects = st.multiselect('Select the projects to show',projectsName,default=projectsName[-1],key='SelectedProjects_ms')
     selected_feature = st.selectbox('Select the feature to show',active_features, key='SelectedFeature_sb')
-    selected_chart = st.selectbox('Select chart type',['Daily Line chart', 'Daily Distribution plot'], key='SelectedChart_sb')
+    selected_chart = st.selectbox('Select chart type',['Daily Line chart :shark:', 'Daily Distribution plot'], key='SelectedChart_sb')
 
 if len(selected_projects) > 0:
      res = st.session_state.DateSlider
