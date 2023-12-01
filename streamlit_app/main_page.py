@@ -1,15 +1,18 @@
-import calendar ,yaml, base64, datetime
+import yaml, datetime
 import pandas as pd
 import numpy as np
 #streamlit
 import streamlit as st
 from st_clickable_images import clickable_images
+from streamlit_modal import Modal
+import streamlit.components.v1 as components
 #charting
 import plotly.figure_factory as ff
 import plotly.express as px
 #custom functions 
 from support import *
 
+__version__ = 3.0
 print ('\n'*10)
 
 #-----------------------------------------------------------------------------------------------------------
@@ -62,6 +65,7 @@ trees_to_plant_min  = "{0:3.0f}".format(cumulated_emmissions/d['cnf']['CARBON_BA
 trees_to_plant_max  = "{0:3.0f}".format(cumulated_emmissions/d['cnf']['CARBON_BALANCE']['tree_co2kg_ratio_max'])
 area_needed = "{0:3.0f}".format(10000*(cumulated_emmissions/d['cnf']['CARBON_BALANCE']['tree_co2kg_ratio_min']) / d['cnf']['CARBON_BALANCE']['trees_per_hectare_avg'])
 
+
 #-----------------------------------------------------------------------------------------------------------
 # #build page layout
 #-----------------------------------------------------------------------------------------------------------
@@ -69,12 +73,16 @@ area_needed = "{0:3.0f}".format(10000*(cumulated_emmissions/d['cnf']['CARBON_BAL
 
 col1, col2 = st.columns([3, 1])
 #render column 
-with col1: clk =  insert_clickable_image(image_file = "resources/forest0_strip.png", title= "EMISSION TRACKER ver. 2.0", size= 350, justification='center')
+
+
+with col1: 
+    main_clicked =  insert_clickable_image(image_file = "resources/forest0_strip.png", title= "EMISSION TRACKER ver. "+str(__version__).zfill(2), size= 350, justification='center')
+
 #render summary colum 
 with col2:
     with st.container(): #row 0 - LEFT TITLE
         s = '<head><style>h1 {text-align: center;} 2 {text-align: left;} h3 {text-align: center;}</style></head>'
-        st.markdown(s+'<h1>CARBON BALANCE</h1><p><h3> Y E A R  -   t o  -  D A T E</h3>', unsafe_allow_html=True)
+        st.markdown(s+'<h1>CARBON BALANCE</h1><p><h3> Y E A R  L Y </h3>', unsafe_allow_html=True)
     with st.container(): #row 1 - NUMBER OF TREES to ZERO BALANCE
         col210, col220 = st.columns([1,3])
         with col210:    tree_clk = insert_clickable_image(image_file = "resources/trees.png", title= "NUMBER OF TREES to ZERO BALANC", size= 50, justification='right')
