@@ -8,6 +8,33 @@ from st_clickable_images import clickable_images
 
 import pandas as pd
 
+def get_base64_of_bin_file(png_file):
+    with open(png_file, "rb") as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+def build_markup_for_logo(png_file,background_position="100% 100%",margin_top="100%",image_width="80%",image_height="33%"):
+    binary_string = get_base64_of_bin_file(png_file)
+    return """
+            <style>
+                [data-testid="stSidebarNav"] {
+                    background-image: url("data:image/png;base64,%s");
+                    background-repeat: no-repeat;
+                    padding-top: 100px;
+                    background-size: %s %s;
+                }
+            </style>
+            """ % (binary_string,image_width,image_height)
+
+def add_logo(png_file):
+    logo_markup = build_markup_for_logo(png_file)
+    st.markdown(
+        logo_markup,
+        unsafe_allow_html=True,
+    )
+
+
+
 
 def hex_to_RGB(hex):
   ''' "#FFFFFF" -> [255,255,255] '''

@@ -4,8 +4,9 @@ import numpy as np
 #streamlit
 import streamlit as st
 from st_clickable_images import clickable_images
-from streamlit_modal import Modal
-import streamlit.components.v1 as components
+from streamlit_extras.switch_page_button import switch_page
+
+
 #charting
 import plotly.figure_factory as ff
 import plotly.express as px
@@ -13,7 +14,6 @@ import plotly.express as px
 from support import *
 
 __version__ = 3.0
-print ('\n'*10)
 
 #-----------------------------------------------------------------------------------------------------------
 # @st.cache_data
@@ -41,6 +41,33 @@ def load_data():
     return {'cnf':_configuration,'daily_data':_daily_data_df,'entries':len(_daily_data_df[proj])}
   
 
+#-SIDEBAR LOGO------------------------------------------------------------------------
+def get_base64_of_bin_file(png_file):
+    with open(png_file, "rb") as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+def build_markup_for_logo(png_file,background_position="100% 100%",margin_top="100%",image_width="80%",image_height="33%"):
+    binary_string = get_base64_of_bin_file(png_file)
+    return """
+            <style>
+                [data-testid="stSidebarNav"] {
+                    background-image: url("data:image/png;base64,%s");
+                    background-repeat: no-repeat;
+                    padding-top: 100px;
+                    background-size: %s %s;
+                }
+            </style>
+            """ % (binary_string,image_width,image_height)
+
+def add_logo(png_file):
+    logo_markup = build_markup_for_logo(png_file)
+    st.markdown(
+        logo_markup,
+        unsafe_allow_html=True,
+    )
+
+
 #-----------------------------------------------------------------------------------------------------------
 #build main page  
 st.set_page_config(layout="wide")
@@ -66,15 +93,32 @@ trees_to_plant_max  = "{0:3.0f}".format(cumulated_emmissions/d['cnf']['CARBON_BA
 area_needed = "{0:3.0f}".format(10000*(cumulated_emmissions/d['cnf']['CARBON_BALANCE']['tree_co2kg_ratio_min']) / d['cnf']['CARBON_BALANCE']['trees_per_hectare_avg'])
 
 
+
+
+
 #-----------------------------------------------------------------------------------------------------------
 # #build page layout
 #-----------------------------------------------------------------------------------------------------------
-#containers for logo (left) and data summary (right)
+#configure Sidebar
+#add_logo("./resources/Logo Innovation Lab (Corporate).png")    
+add_logo("./resources/LogoSisalVerde.png")
+with st.sidebar:
+    from st_pages import Page, show_pages, add_page_title, Section
+    show_pages(
+    [
+        Page("streamlit_app/main_page.py", "Home", "🏠"),
+        Page("streamlit_app/pages/Data_Loader.py", "DATA LOADER" ,"⚙️"),
+        Page("streamlit_app/pages/Logistic_regression.py", "LOGISTIC REG." ,"⚙️"),
+        Page("streamlit_app/pages/XGBoost_model.py", "XG BOOSTER" ,"⚙️"),
+        Page("streamlit_app/pages/map.py", "    MAP" ,"🦚"),
+        
+    ]
+)
 
+
+#containers for applogo (left) and data summary (right)
 col1, col2 = st.columns([3, 1])
 #render column 
-
-
 with col1: 
     main_clicked =  insert_clickable_image(image_file = "resources/forest0_strip.png", title= "EMISSION TRACKER ver. "+str(__version__).zfill(2), size= 350, justification='center')
 
