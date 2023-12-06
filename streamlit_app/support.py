@@ -126,8 +126,6 @@ def build_subpage(streamlit_obj, title,df_csv):
     s = '<hr><div class="row"><div class="col-md-8 col-sm-6 col-xs-12"><p class="copyright-text">SISAL - INNOVATION LAB - 2023</p></div></div>'
     streamlit_obj.markdown(s, unsafe_allow_html=True)   
     
-
-
 def update_metrics(placeholders, actual_data, reference_data, keys, decimals = 2):
     """_summary_
 

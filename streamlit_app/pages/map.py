@@ -77,7 +77,7 @@ with st.form('my form'):
     st.container()
     col1,col2 = st.columns([3,1])
     with col2:
-        sbmt = st.form_submit_button(label="Refresh map", help=None, on_click=None) 
+        sbmt = st.form_submit_button(label="Refresh map", help='Click to apply changes and refresh the map', on_click=None) 
         opacity = st.slider('Select Transparency', 0, 100, 50,key="slider_transparency")
         st.container()
         st.text('Select colors for solid and gradient')
@@ -104,6 +104,7 @@ with st.form('my form'):
         geography_data = "./data_raw/limits_P_15_municipalities.geojson"
         _data=make_data(geojson_filename=geography_data)   
         palette = makePalette(colors = [c0,c1,c2,c3], bins = 10)    
+        
  
     with col1:
         #creates folium map

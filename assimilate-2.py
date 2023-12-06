@@ -95,9 +95,5 @@ for c in cols:
 print(dfa.head(),'\n\n',dfa.tail())
 dfa.to_csv('./assimilated_data/'+configuration['PROJECTS']['00']+'.csv')
 
-
-
-
-
 # df.to_csv('./assimilated_data/'+configuration['PROJECTS']['00']+'.csv')
 print ('\nProcess completed')
