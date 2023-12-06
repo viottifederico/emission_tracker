@@ -121,6 +121,10 @@ def build_subpage(streamlit_obj, title,df_csv):
     fig = px.scatter(filtered_df, x=x_ax, y=y_ax,  marginal_y="box",
                 marginal_x="box", trendline="ols", template="simple_white")
     streamlit_obj.plotly_chart(fig,  use_container_width=True)
+    #footer
+    streamlit_obj.container()
+    s = '<hr><div class="row"><div class="col-md-8 col-sm-6 col-xs-12"><p class="copyright-text">SISAL - INNOVATION LAB - 2023</p></div></div>'
+    streamlit_obj.markdown(s, unsafe_allow_html=True)   
     
 
 
@@ -248,3 +252,5 @@ def subset_df(df, column='date', values=None):
     out = df[(df[column] > values[0]) & (df[column]< values[1])]
     print ('-> subset_df ::', out[column].iloc[0], type(out[column].iloc[0]),out[column].iloc[-1], type(out[column].iloc[-1]), )
     return out
+
+

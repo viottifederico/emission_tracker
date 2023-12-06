@@ -237,5 +237,6 @@ with st.container():
                   
         st.plotly_chart(fig,  use_container_width=True)
                
-        
-
+st.container()
+s += '<hr><div class="row"><div class="col-md-8 col-sm-6 col-xs-12"><p class="copyright-text">SISAL - INNOVATION LAB - 2023</p></div></div>'
+st.markdown(s, unsafe_allow_html=True)        

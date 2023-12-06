@@ -107,7 +107,8 @@ with st.form('my form'):
  
     with col1:
         #creates folium map
-        m = folium.Map(location=[45.4668, 9.1905], zoom_start=10,tiles=BkMapStyle)
+        keywords={'timeDimensionControl':False}
+        m = folium.Map(location=[45.4668, 9.1905], zoom_start=10,tiles=BkMapStyle,**keywords)
         #colored polygonsa
         if MapType == 'Colored polygons':
             geo_j = folium.GeoJson(data=_data, style_function = stfunc)
@@ -199,12 +200,14 @@ with st.form('my form'):
                                                 markerSize = AnimationPointSize)
                                             
             #invoke animationmethod
+            keywords = {'timeDimensionControl': False}
             TimestampedGeoJson(
                 {'type': 'FeatureCollection',
                 'features': features}
                 , period='P1D'
                 , transition_time=100
                 , auto_play=True
+                
                 # , add_last_point=True
                 # , max_speed=5
                 # , loop=True
@@ -214,7 +217,11 @@ with st.form('my form'):
 
         #publish folium object (map) to the page 
         st_data = st_folium(m,   height=500,    width='100%')
- 
+
+#footer
+st.container()
+s = '<hr><div class="row"><div class="col-md-8 col-sm-6 col-xs-12"><p class="copyright-text">SISAL - INNOVATION LAB - 2023</p></div></div>'
+st.markdown(s, unsafe_allow_html=True)         
            
         
  
