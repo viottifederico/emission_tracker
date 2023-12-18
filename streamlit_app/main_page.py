@@ -6,7 +6,6 @@ import streamlit as st
 from st_clickable_images import clickable_images
 from streamlit_extras.switch_page_button import switch_page
 
-
 #charting
 import plotly.figure_factory as ff
 import plotly.express as px

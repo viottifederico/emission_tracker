@@ -202,8 +202,7 @@ with st.form('my form'):
                                             
             #invoke animationmethod
             keywords = {'timeDimensionControl': False}
-            TimestampedGeoJson(
-                {'type': 'FeatureCollection',
+            TimestampedGeoJson({'type': 'FeatureCollection',
                 'features': features}
                 , period='P1D'
                 , transition_time=100
