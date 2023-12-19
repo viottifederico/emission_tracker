@@ -1,2 +1,0 @@
-project_name,duration,emissions,emissions_rate,cpu_power,ram_power,cpu_energy,ram_energy,energy_consumed,country_name,region,os,python_version,cpu_count,cpu_model,ram_total_size
-projectexcecuterdataload,91.31438732147043,5.911977415798437,23.68164312970054,1825.0,2190.0,1.2127995491027832,1.336609125137329,2.5494086742401123,Albania,tirana,macOS-14.1-arm64-arm-64bit,3.9.6,10,Apple M1 Pro,16.0

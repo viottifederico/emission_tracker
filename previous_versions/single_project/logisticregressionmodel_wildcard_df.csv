@@ -1,2 +1,0 @@
-project_name,duration,emissions,emissions_rate,cpu_power,ram_power,cpu_energy,ram_energy,energy_consumed,country_name,region,os,python_version,cpu_count,cpu_model,ram_total_size
-logisticregressionmodel,333.37595462798885,23.097516686799786,25.42274181746201,1825.0,2190.0,4.580809341536628,5.397931337356567,9.978740678893196,Albania,tirana,macOS-14.1-arm64-arm-64bit,3.9.6,10,Apple M1 Pro,16.0
